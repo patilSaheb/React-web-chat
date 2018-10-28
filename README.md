@@ -12,7 +12,7 @@ Highlights:
 # Clone this repository
 git clone https://github.com/suraj9793/React-web-chat
 # Go into the repository
-cd electron-quick-start
+cd React-web-chat
 # Install dependencies
 npm install
 # Run the app
