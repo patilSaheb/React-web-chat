@@ -15,6 +15,13 @@ git clone https://github.com/suraj9793/React-web-chat
 cd React-web-chat
 # Install dependencies
 npm install
+# Config file structure and prerequisite setup
+After creating pusher account create config.json as follows:
+{
+    "instanceLocator": "YOUR_INSTANCE_LOCATOR",
+    "key": "YOUR_KEY",
+    "url": "YOUR_URL"
+}
 # Run the app
 npm start
 ```
