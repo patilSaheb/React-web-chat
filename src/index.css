@@ -1,0 +1,72 @@
+body {
+  font-family:  BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.username-form {
+  padding: 10px;
+}
+
+.username-form button {
+  margin-top: 10px;
+}
+
+.wrapper {
+  height: 100vh;
+  display: flex;
+
+}
+
+.online-list {
+  /* box-shadow: 0 -8px 20px 2px #DEDEE3; */
+  background: #F8FAFD;
+}
+
+.chat {
+  /* background: #F4FAFE; */
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+
+.send-message-form{
+  padding: 10px 15px 10px 15px;
+  display: flex;
+}
+
+.autoScroll{
+  overflow-y:auto;
+}
+
+.send-message-form div {
+  flex: 1;
+  margin-right: 5px;
+}
+
+
+.online-list-item {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+li span {
+  padding-right: 5px;
+}
+
+.current-user-style {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.other-user-style {
+  display: flex;
+  justify-content: flex-start
+}
+
+.chat-background {
+  background-image: linear-gradient(90deg,#bec3e0,#ef9c94);
+}
