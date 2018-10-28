@@ -16,7 +16,7 @@ cd React-web-chat
 # Install dependencies
 npm install
 # Config file structure and prerequisite setup
-After creating pusher account create config.json as follows:
+After creating pusher account create config.json in src folder as follows:
 {
     "instanceLocator": "YOUR_INSTANCE_LOCATOR",
     "key": "YOUR_KEY",
