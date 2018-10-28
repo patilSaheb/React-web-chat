@@ -1,7 +1,7 @@
 # React-web-chat
 This is a sibling web chat app based off react that goes with electron.
 
-Post-clone prerequisite must-do's:
+# Post-clone prerequisite must-do's:
 - Create a free pusher account
 - Create a instance to generate pusher credentials
 - Create a config file such as "config.json" to store your credentials in /src folder
