@@ -27,7 +27,7 @@ class Chat extends Component {
                 this.setState({ currentUser })
                 console.log('You are connected.')
                 return currentUser.subscribeToRoom({
-                    roomId: currentUser.rooms[0].id, // Replace with YOUR ROOM ID
+                    roomId: secrets.roomId, // Replace with YOUR ROOM ID
                     messageLimit: 100,
                     hooks: {
                         onNewMessage: message => {
