@@ -22,5 +22,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom"
   },
-  "proxy": "https://localhost:3001"
+  "proxy": {
+    "/users": {
+      "target": "http://localhost:3001"
+    }
+  }
 }
