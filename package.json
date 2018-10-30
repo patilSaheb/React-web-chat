@@ -11,7 +11,8 @@
     "pusher-chatkit-server": "^0.12.0",
     "react": "^16.0.0",
     "react-desktop": "^0.3.7",
-    "react-dom": "^16.0.0"
+    "react-dom": "^16.0.0",
+    "react-preloading-component": "0.0.5"
   },
   "scripts": {
     "start": "react-scripts start",

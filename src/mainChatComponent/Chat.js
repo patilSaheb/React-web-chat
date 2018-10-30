@@ -4,12 +4,14 @@ import MessageList from './MessageList'
 import SendMessageForm from './SendMessageForm'
 import OnlineList from './OnlineList'
 import * as secrets from '../config.json'
+import { Flag } from 'react-preloading-component';
 
 class Chat extends Component {
     state = {
         currentUser: null,
         currentRoom: {},
-        messages: []
+        messages: [],
+        loading: true,
     }
 
     componentDidMount() {
@@ -42,7 +44,10 @@ class Chat extends Component {
                 })
             })
             .then(currentRoom => {
-                this.setState({ currentRoom })
+                this.setState({
+                    currentRoom,
+                    loading: false
+                })
             })
             .catch(error => console.error('error', error))
     }
@@ -55,34 +60,42 @@ class Chat extends Component {
     }
 
     filterDeleted = () => {
-        const messageList = (this.state.messages).filter((i) =>
-        {
-                return (i.senderId).includes(".deleted.") === false;
+        const messageList = (this.state.messages).filter((i) => {
+            return (i.senderId).includes(".deleted.") === false;
         })
         return messageList
     }
 
-    render() {        
-        return (
-            <div className="wrapper">
-                <div>
-                    <OnlineList
-                        currentUser={this.state.currentUser}
-                        users={this.state.currentRoom.users}
-                    />
+    render() {
+        if (this.state.loading === false) {
+            return (
+                <div className="wrapper">
+                    <div>
+                        <OnlineList
+                            currentUser={this.state.currentUser}
+                            users={this.state.currentRoom.users}
+                        />
+                    </div>
+                    <div className="chat">
+                        <MessageList
+                            currentUser={this.state.currentUser}
+                            room={this.state.currentRoom}
+                            messages={this.filterDeleted()}
+                            users={this.state.currentRoom.users}
+                            instantReply={this.onSend}
+                        />
+                        <SendMessageForm currentUser={this.state.currentUser} onSend={this.onSend} />
+                    </div>
                 </div>
-                <div className="chat">
-                    <MessageList
-                        currentUser={this.state.currentUser}
-                        room={this.state.currentRoom}
-                        messages={this.filterDeleted()}
-                        users={this.state.currentRoom.users}
-                        instantReply={this.onSend}
-                    />
-                    <SendMessageForm currentUser={this.state.currentUser} onSend={this.onSend} />
-                </div>
-            </div>
-        )
+            )
+        } else {
+            return (
+                <div className="wrapper">
+                    <Flag color="#F8FAFD" size={10} />
+                </div>                
+            )
+        }
+
     }
 }
 
