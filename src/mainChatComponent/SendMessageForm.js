@@ -10,9 +10,6 @@ class SendMessageForm extends Component {
     e.preventDefault()
     this.props.onSend(this.state.text)
     this.setState({ text: '' })
-    // if (this.state.text !== undefined || '') {
-    //   this.sendNotif(this.state.text)
-    // }
   }
 
   onChange = e => {
@@ -22,24 +19,12 @@ class SendMessageForm extends Component {
     }
   }
 
-  // replyReciever = (reply) => {
-  //   console.log('reply',reply)
-  //   const replyMessage = reply.message
-  //   this.props.onSend(replyMessage)
-  // }
-
-  // sendNotif = (msg) => {
-  //   if(window.notifier){
-  //     console.log('consuming');
-  //     window.notifier.notifierFunction(msg, this.replyReciever);
-  //   }
-  // }
-
   render() {
     return (
       <div className="send-message-form-container">
         <form onSubmit={this.onSubmit} className="send-message-form">
           <TextInput
+            autoFocus
             type="text"
             onChange={this.onChange}
             value={this.state.text}

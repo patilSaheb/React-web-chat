@@ -48,7 +48,6 @@ class Chat extends Component {
     }
 
     onSend = text => {
-        console.log(text)
         this.state.currentUser.sendMessage({
             text,
             roomId: this.state.currentRoom.id

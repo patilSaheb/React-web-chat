@@ -25,6 +25,7 @@ class UsernameForm extends Component {
         <form onSubmit={this.handleSubmit}>
           <div>
             <TextInput
+              autoFocus
               label="Username:"
               placeholder="For example, @bookercodes"
               value={this.state.username}
