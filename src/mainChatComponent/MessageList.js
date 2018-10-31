@@ -19,19 +19,18 @@ class MessageList extends Component {
     }
   }
 
-  // shouldComponentUpdate(nextProps) {
-  //   const vitalPropsChange = this.props.messages !== nextProps.messages
-  //   if (vitalPropsChange) {this.sendNotif(this.state.text)}
-  //   return vitalPropsChange
-  // }
-
   getSnapshotBeforeUpdate(prevProps) {
     // Capture the scroll position so we can adjust scroll later.
     if (prevProps.messages.length < this.props.messages.length) {
-      let last = this.props.messages
-      // const list = this.listRef.current;
-      // return list.scrollHeight - list.scrollTop;
-      this.sendNotif(last[last.length - 1].text)//extract the text from last item and send a notification
+      const last = this.props.messages
+      let alertData
+      if(this.props.currentUser.id !== last[last.length - 1].senderId) {
+      alertData = {
+          name: last[last.length - 1].senderId,
+          text: last[last.length - 1].text,        
+        }
+        this.sendNotif(alertData)//extract the text from last item and send a notification
+      }
     }
     return null;
   }
@@ -47,7 +46,7 @@ class MessageList extends Component {
     }
   }
 
-  componentDidUpdate() {
+  componentDidUpdate(prevProps) {
     this.newData.scrollIntoView({ behavior: "smooth" })
   }
 
