@@ -46,7 +46,7 @@ class MessageList extends Component {
     }
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate() {
     this.newData.scrollIntoView({ behavior: "smooth" })
   }
 
