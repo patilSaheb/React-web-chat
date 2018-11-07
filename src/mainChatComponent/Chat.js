@@ -59,6 +59,24 @@ class Chat extends Component {
         })
     }
 
+    onFileSend = file => {
+        console.log(file)
+        this.state.currentUser.sendMessage({
+            text: file.name,
+            roomId: this.state.currentRoom.id,
+            attachment: {
+                file: file,
+                name: Date.now()+file.name
+              }
+            })
+            .then(messageId => {
+              console.log(`Added message to ${this.state.currentRoom.id} ${messageId}`)
+            })
+            .catch(err => {
+              console.log(`Error adding message to ${this.state.currentRoom.id}: ${err}`)
+            })
+    }
+
     filterDeleted = () => {
         const messageList = (this.state.messages).filter((i) => {
             return (i.senderId).includes(".deleted.") === false;
@@ -84,7 +102,7 @@ class Chat extends Component {
                             users={this.state.currentRoom.users}
                             instantReply={this.onSend}
                         />
-                        <SendMessageForm currentUser={this.state.currentUser} onSend={this.onSend} />
+                        <SendMessageForm currentUser={this.state.currentUser} onFileSend={this.onFileSend} onSend={this.onSend} />
                     </div>
                 </div>
             )

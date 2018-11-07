@@ -24,11 +24,12 @@ class MessageList extends Component {
     if (prevProps.messages.length < this.props.messages.length) {
       const last = this.props.messages
       let alertData
-      if(this.props.currentUser.id !== last[last.length - 1].senderId) {
-      alertData = {
+      if (this.props.currentUser.id !== last[last.length - 1].senderId) {        
+        alertData = {
           name: last[last.length - 1].senderId,
-          text: last[last.length - 1].text,        
+          text: last[last.length - 1].text,
         }
+        if(last[last.length - 1].attachment !== undefined) {alertData.link = last[last.length - 1].attachment.link}
         this.sendNotif(alertData)//extract the text from last item and send a notification
       }
     }
@@ -41,7 +42,7 @@ class MessageList extends Component {
   }
 
   sendNotif = (msg) => {
-    if(window.notifier){
+    if (window.notifier) {
       window.notifier.notifyUser(msg, this.replyReciever);
     }
   }
@@ -71,14 +72,24 @@ class MessageList extends Component {
   }
 
   renderItem(message) {
+    let img
+    if (message.attachment !== undefined) {
+      img =
+        <img className="nextLine" alt="img" src={message.attachment.link} />
+    } else {
+      img = null
+    }
     return (
       <ListViewRow key={message.id} className={(this.props.currentUser.id === message.senderId) ? "current-user-style" : "other-user-style"}>
         <Text color="#414141" size="14" bold>
           {message.senderId}:
         </Text>
+        <div >
+        {img}
         <Text color="#414141" size="14">
           {message.text}
         </Text>
+        </div>
       </ListViewRow>
     )
   }
